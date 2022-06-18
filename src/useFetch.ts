@@ -1,17 +1,13 @@
 export const useFetch = async (url: string) => {
-  let isLoading = true;
-  let response = null;
-  try {
-    const resp = await fetch(url);
-    let status = resp.status;
-    let data = await resp.json();
-    response = { data, status };
-    isLoading = false;
-  } catch (error) {
-    isLoading = false;
-    console.error(error);
+  let error = null;
+  let data = null;
+  const resp = await fetch(url);
+  let status = resp.status;
+  if (status !== 200) {
+    error = await resp.json();
+    error.status = status;
+    return { error };
   }
-  return { isLoading, response };
+  data = await resp.json();
+  return { data, error };
 };
-
-console.log('hello');
