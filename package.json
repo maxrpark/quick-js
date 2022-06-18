@@ -1,6 +1,6 @@
 {
   "name": "speedscript",
-  "version": "0.0.3",
+  "version": "0.0.63",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
