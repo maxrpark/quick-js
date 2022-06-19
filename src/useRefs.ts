@@ -1,21 +1,7 @@
-import { HTMLElementTagNameMap } from './interfaces';
-interface DOMElement {
-  ref: HTMLElement | null;
-}
-
-// interface RefInterface {
-//   ref: any;
-//   onClick?: (callback: () => void) => void;
-//   onChange?: (callback: () => void) => void;
-//   onSubmit?: (callback: () => void) => void;
-//   onSubmitPrevent?: (callback: () => void) => void;
-//   toogleClass?: (className: string) => void;
-// }
-
 class Ref {
   ref: HTMLFormElement | HTMLElement | HTMLInputElement | HTMLDivElement;
-  constructor(refel: any) {
-    this.ref = refel;
+  constructor(ref: any) {
+    this.ref = ref;
   }
 
   onClick(callback: () => void) {
@@ -41,7 +27,7 @@ class Ref {
       });
     }
   }
-  toogleClass(className: string) {
+  toogle(className: string) {
     if (this.ref) {
       this.ref.classList.toggle(className);
     }
@@ -53,7 +39,7 @@ export const refs = (id: string): any => {
   let element;
   let list = [] as any[];
   if (!refs) {
-    alert(`Element MAcwith id ${id} not found`);
+    alert(`Element with id ${id} not found`);
     throw new Error(`Element with id ${id} not found`);
   } else {
     refs.forEach((refel) => {
